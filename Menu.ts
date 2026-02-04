@@ -4,7 +4,7 @@ import { Conta } from "./src/model/Conta";
 
 
 
-
+export function main() {
     //instanciar o objeto
     const c1 = new Conta(1021, 1234, "Sofia", 1 , 100000.00)
 
@@ -14,9 +14,14 @@ import { Conta } from "./src/model/Conta";
     console.log("Sacar 0:", c1.sacar(0));
 
     //teste metodo depositar
-    console.log("Depositar -100,00:", c1.depositar(-100));
-    console.log("Depositar 500:", c1.depositar(500));
-    console.log("Depositar 0:", c1.depositar(0));
+    console.log("Depositar -100,00:")
+    c1.depositar(-100);
+    console.log("Depositar 500:") 
+        c1.depositar(500);
+    console.log("Depositar 0:")
+         c1.depositar(0);
+
+         
     let criaC: String;
 
 
@@ -51,7 +56,7 @@ colors.reset);
         console.log("************************** \n")
         console.log("Digite o numero da agencia:")
         console.log(colors.fg.red)
-        criaC = leia.keyIn(`Confirma a conta: \n Agencia: ${c1.agencia} Conta: ${c1.numero}\n Titular: ${c1.titular} Tipo de conta: ${c1.tipo} \n Saldo Atual: ${c1.saldo}`);
+        criaC = leia.keyIn(`Confirma a conta: \n Agencia: ${c1.agencia}  || Conta: ${c1.numero}\n Titular: ${c1.titular} || Tipo de conta: ${c1.tipo} \n Saldo Atual: ${c1.saldo}`);
         console.log("***************************", 
             colors.reset)
         break;
@@ -153,7 +158,14 @@ colors.reset);
             colors.reset);
         
     }
+}
 
+/* Função de pausa entre as opções do menu */
+function keyPress(): void {
+    console.log(colors.reset,"\nPressione enter para continuar...");
+    leia.prompt();
+}
 
+main();
 
 
