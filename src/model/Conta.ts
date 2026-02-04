@@ -91,10 +91,11 @@ export class Conta{
     public depositar(valor:number): void{
         if(valor<=0){
             console.log(colors.fg.red , " Valor tem que ser positivo", colors.reset)
-
         }
+        
         else{
-            this._saldo += valor;
+         
+         this._saldo += valor;
          console.log(colors.fg.red , " Valor foi depositado:", valor , colors.reset )
          console.log(colors.fg.red , " Valor atual", this._saldo , colors.reset )}
     }
