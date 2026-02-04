@@ -1,8 +1,10 @@
-import leia from "readline-sync"
+
 import { colors } from "./src/util/Colors"
 import { Conta } from "./src/model/Conta";
+import { Input } from "./src/util/Input";
 
 
+let criaC: String;
 
 export function main() {
     //instanciar o objeto
@@ -17,48 +19,64 @@ export function main() {
     console.log("Depositar -100,00:")
     c1.depositar(-100);
     console.log("Depositar 500:") 
-        c1.depositar(500);
+    c1.depositar(500);
     console.log("Depositar 0:")
-         c1.depositar(0);
+    c1.depositar(0);
 
-         
-    let criaC: String;
+
+    
 
 
 while(true){    
 console.log(colors.bg.black, colors.fg.magenta,
-            "************************************************");
-console.log("*                 Banco do Brazil                *");
-console.log("**************************************************");
-console.log("           |1| Criar conta                        ");
-console.log("           |2| Listar todas as contas             ");
-console.log("           |3| Buscar conta por numero            ");
-console.log("           |4| Atualizar dados da conta           ");
-console.log("           |5| Apagar conta                       ");
-console.log("           |6| Sacar                              ");
-console.log("           |7| Depositar                          ");
-console.log("           |8| Transferir valores entre contas    ");
-console.log("           |9| Buscar pelo titular                ");
-console.log("           |0| Sair                               ");
-console.log("**************************************************");
+            "\n==================================================");
+console.log("||                Banco do Brazil               ||");
+console.log("==================================================");
+console.log("||         |1| Criar conta                      ||");
+console.log("||         |2| Listar todas as contas           ||");
+console.log("||         |3| Buscar conta por numero          ||");
+console.log("||         |4| Atualizar dados da conta         ||");
+console.log("||         |5| Apagar conta                     ||");
+console.log("||         |6| Sacar                            ||");
+console.log("||         |7| Depositar                        ||");
+console.log("||         |8| Transferir valores entre contas  ||");
+console.log("||         |9| Buscar pelo titular              ||");
+console.log("||         |0| Sair                             ||");
+console.log("==================================================");
 console.log("                                                  ",
 colors.reset);
 
-    let opcao= leia.questionInt("Digite a Opção desejada:\n")
+    console.log("Digite a Opção desejada:\n")
+    let opcao= Input.questionInt("")
     
     switch (opcao) {
 
         case 1:
-           
-        console.log(colors.bg.black, colors.fg.white,
+
+        do{
+        console.log(colors.bg.black, colors.fg.whitestrong,
                     "*************************")
         console.log("        Criar conta       ")
         console.log("************************** \n")
         console.log("Digite o numero da agencia:")
+        
+        let teste = Input.question(" ");
+
+        console.log (teste);
+
         console.log(colors.fg.red)
-        criaC = leia.keyIn(`Confirma a conta: \n Agencia: ${c1.agencia}  || Conta: ${c1.numero}\n Titular: ${c1.titular} || Tipo de conta: ${c1.tipo} \n Saldo Atual: ${c1.saldo}`);
+        criaC = Input.question(`Confirma a conta: \n Agencia: ${c1.agencia}  || Conta: ${c1.numero}\n Titular: ${c1.titular} || Tipo de conta: ${c1.tipo} \n Saldo Atual: ${c1.saldo}
+            \n (S) Sim  (N) No \n`).toUpperCase();
+
+        console.log("***************************")    
+        if(criaC==="S"){
+            console.log("Conta criada com sucesso ^^")
+            keyPress();
+        }
         console.log("***************************", 
             colors.reset)
+
+        }while(criaC==="N")
         break;
 
         case 2:
@@ -67,7 +85,7 @@ colors.reset);
         console.log("  LISTA DAS CONTAS ATIVAS ")
         console.log("*************************** \n", colors.reset)
 
-
+            keyPress();
 
         break;
         case 3:
@@ -75,7 +93,7 @@ colors.reset);
                     "**************************")
         console.log("  BUSCAR CONTA POR NUMERO ")
         console.log("*************************** \n", colors.reset)
-        
+        keyPress();
         break;
 
         case 4:
@@ -85,7 +103,7 @@ colors.reset);
         console.log("*************************** \n", colors.reset)
         console.log("Digite o numero da conta que deseja atualizar:")
 
-
+            keyPress();
 
         break;
 
@@ -95,6 +113,7 @@ colors.reset);
         console.log("       APAGAR CONTA       ")
         console.log("*************************** \n", colors.reset)
         console.log("Digite o numero da conta que deseja apagar:")
+        keyPress();
         break;
 
         case 6:
@@ -103,7 +122,7 @@ colors.reset);
         console.log("           SACAR          ")
         console.log("*************************** \n", colors.reset)
         console.log("Digite o numero da conta que deseja sacar:")
-
+            keyPress();
         break;
 
         case 7:
@@ -113,7 +132,7 @@ colors.reset);
         console.log("*************************** \n", colors.reset)
         console.log("Digite o numero da conta que deseja depositar:")
 
-
+            keyPress();
         break;
 
         case 8:
@@ -124,6 +143,8 @@ colors.reset);
         console.log("De qual conta você deseja transferir")
 
         console.log("Qual conta que você deseja receber? ")
+
+        keyPress();
         break;
 
         case 9:
@@ -131,6 +152,8 @@ colors.reset);
                     "*****************************")
         console.log("     BUSCA PELO TITULAR      ")
         console.log("****************************\n", colors.reset)
+
+        keyPress();
         break;
         
         case 0:
@@ -146,7 +169,7 @@ colors.reset);
 }
 
     function sobre(){
-        console.log(colors.bg.black, colors.fg.cyan,
+        console.log(colors.bg.black, colors.fg.cyanstrong,
                     "***************************************************************");
         console.log("           OBRIGADO POR UTILIZAR O NOSSO BANCO \n               ");
         console.log("***************************************************************");
@@ -163,7 +186,7 @@ colors.reset);
 /* Função de pausa entre as opções do menu */
 function keyPress(): void {
     console.log(colors.reset,"\nPressione enter para continuar...");
-    leia.prompt();
+    Input.prompt();
 }
 
 main();
