@@ -1,9 +1,26 @@
 import leia from "readline-sync"
 import { colors } from "./src/util/Colors"
+import { Conta } from "./src/model/Conta";
 
 
-let conta
 
+
+    //instanciar o objeto
+    const c1 = new Conta(1021, 1234, "Sofia", 1 , 100000.00)
+
+    //teste metodo sacar
+    console.log("Sacar 100,00:", c1.sacar(100));
+    console.log("Sacar 200000.00:", c1.sacar(200000.00));
+    console.log("Sacar 0:", c1.sacar(0));
+
+    //teste metodo depositar
+    console.log("Depositar -100,00:", c1.depositar(-100));
+    console.log("Depositar 500:", c1.depositar(500));
+    console.log("Depositar 0:", c1.depositar(0));
+    let criaC: String;
+
+
+while(true){    
 console.log(colors.bg.black, colors.fg.magenta,
             "************************************************");
 console.log("*                 Banco do Brazil                *");
@@ -33,7 +50,8 @@ colors.reset);
         console.log("        Criar conta       ")
         console.log("************************** \n")
         console.log("Digite o numero da agencia:")
-        
+        console.log(colors.fg.red)
+        criaC = leia.keyIn(`Confirma a conta: \n Agencia: ${c1.agencia} Conta: ${c1.numero}\n Titular: ${c1.titular} Tipo de conta: ${c1.tipo} \n Saldo Atual: ${c1.saldo}`);
         console.log("***************************", 
             colors.reset)
         break;
@@ -120,7 +138,7 @@ colors.reset);
 
 
     }
-
+}
 
     function sobre(){
         console.log(colors.bg.black, colors.fg.cyan,
