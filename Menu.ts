@@ -5,25 +5,25 @@ import { colors } from "./src/util/Colors"
 let conta
 
 console.log(colors.bg.black, colors.fg.magenta,
-            "*************************************************");
-console.log("*                 Banco do Brazil               *");
-console.log("*************************************************");
-console.log("           |1| Criar conta                       ");
-console.log("           |2| Listar todas as contas            ");
-console.log("           |3| Buscar conta por numero           ");
-console.log("           |4| Atualizar dados da conta          ");
-console.log("           |5| Apagar conta                      ");
-console.log("           |6| Sacar                             ");
-console.log("           |7| Depositar                         ");
-console.log("           |8| Transferir valores entre contas   ");
-console.log("           |9| Buscar pelo titular               ");
-console.log("           |0| Sair                              ");
+            "************************************************");
+console.log("*                 Banco do Brazil                *");
+console.log("**************************************************");
+console.log("           |1| Criar conta                        ");
+console.log("           |2| Listar todas as contas             ");
+console.log("           |3| Buscar conta por numero            ");
+console.log("           |4| Atualizar dados da conta           ");
+console.log("           |5| Apagar conta                       ");
+console.log("           |6| Sacar                              ");
+console.log("           |7| Depositar                          ");
+console.log("           |8| Transferir valores entre contas    ");
+console.log("           |9| Buscar pelo titular                ");
+console.log("           |0| Sair                               ");
 console.log("**************************************************");
 console.log("                                                  ",
 colors.reset);
 
     let opcao= leia.questionInt("Digite a Opção desejada:\n")
-    console.clear(); 
+    
     switch (opcao) {
 
         case 1:
