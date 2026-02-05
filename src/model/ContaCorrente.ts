@@ -33,7 +33,7 @@ export class ContaCorrente extends Conta{
 		super.visualizar();
 		console.log(`Limite da conta: R$ ${this._limite} \n`)
 	}
-	
+
 
 	//método sacar sobrescrito
 	public sacar( valor : number): boolean{
@@ -52,7 +52,6 @@ export class ContaCorrente extends Conta{
 			}
 		}
 	
-
 
 }
 
