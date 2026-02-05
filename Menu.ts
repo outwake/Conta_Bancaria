@@ -117,7 +117,7 @@ colors.reset);
         console.log("*************************** \n", colors.reset)
         keyPress();
         break;
-
+        
         case 4:
         console.log(colors.bg.black, colors.fg.white,
                     "**************************")
