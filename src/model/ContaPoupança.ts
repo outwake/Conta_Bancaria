@@ -11,7 +11,7 @@ export class ContaPoupança extends Conta{
         super(numero, agencia, titular, tipo, saldo)
 		this._diaAniversario = diaAniversario;
 	}
-
+	
 
 	public get diaAniversario(): number {
 		return this._diaAniversario;
