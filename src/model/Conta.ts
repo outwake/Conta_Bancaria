@@ -28,7 +28,7 @@ export abstract class Conta{
 	public get numero(): number {
 		return this._numero;
 	}
-    
+
 	public get agencia(): number {
 		return this._agencia;
 	}
@@ -109,7 +109,7 @@ export abstract class Conta{
             break;
 
             case 2:
-                tipo = "Conta Corrente";
+                tipo = "Conta Poupança";
             break;
 
             default:
