@@ -25,5 +25,4 @@ export class ContaPoupança extends Conta{
         super.visualizar();
         console.log(colors.fg.greenstrong,`Dia do Aniversário: ${this._diaAniversario} \n ` )
     }
-    
 }

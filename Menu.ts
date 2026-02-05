@@ -2,29 +2,51 @@
 import { colors } from "./src/util/Colors"
 import { Conta } from "./src/model/Conta";
 import { Input } from "./src/util/Input";
+import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaPoupança } from "./src/model/ContaPoupança";
 
 
 let criaC: String;
 
 export function main() {
     //instanciar o objeto
-    const c1 = new Conta(1021, 1234, "Sofia", 1 , 100000.00)
-
+    //const c1 = new Conta(1021, 1234, "Sofia", 1 , 100000.00)
+//
     //teste metodo sacar
-    console.log("Sacar 100,00:", c1.sacar(100));
-    console.log("Sacar 200000.00:", c1.sacar(200000.00));
-    console.log("Sacar 0:", c1.sacar(0));
+    //console.log("Sacar 100,00:", c1.sacar(100));
+    //console.log("Sacar 200000.00:", c1.sacar(200000.00));
+    //console.log("Sacar 0:", c1.sacar(0));
 
     //teste metodo depositar
-    console.log("Depositar -100,00:")
-    c1.depositar(-100);
+    //console.log("Depositar -100,00:")
+    //c1.depositar(-100);
+    //console.log("Depositar 500:") 
+    //c1.depositar(500);
+    //console.log("Depositar 0:")
+    //c1.depositar(0);
+
+    //teste da classe conta corrente
+    const cc1= new ContaCorrente(2, 5678, "Larissa", 1, 200000.00, 2000.00);
+    const cc2 = new ContaPoupança (3, 8408, "Vinicius", 2, 300000.00, 4)
+
+    console.log("Sacar 200000.00:", cc1.sacar(200000.00));
+    console.log("Sacar 0:", cc1.sacar(0));
+    //nao precisa colocar console.log
+    //c1.visualizar();
+
+    //Brincando com o metodo sacar e depositar
+    cc1.visualizar();
+    console.log("Sacar 200000.00:", cc1.sacar(1000));
+    console.log("Sacar 0:", cc1.sacar(200000));
+    //o saldo vai ficar -1000
+    cc1.visualizar();
     console.log("Depositar 500:") 
-    c1.depositar(500);
-    console.log("Depositar 0:")
-    c1.depositar(0);
+    cc1.depositar(5000);
+    // saldo vai ficar 4000 pois 5000-1000 = 4000
+    cc1.visualizar();
 
+    cc2.visualizar();
 
-    
 
 
 while(true){    
@@ -65,7 +87,7 @@ colors.reset);
         console.log (teste);
 
         console.log(colors.fg.red)
-        criaC = Input.question(`Confirma a conta: \n Agencia: ${c1.agencia}  || Conta: ${c1.numero}\n Titular: ${c1.titular} || Tipo de conta: ${c1.tipo} \n Saldo Atual: ${c1.saldo}
+        criaC = Input.question(`Confirma a conta: \n Agencia: ${cc1.agencia}  || Conta: ${cc1.numero}\n Titular: ${cc1.titular} || Tipo de conta: ${cc1.tipo} \n Saldo Atual: ${cc1.saldo}
             \n (S) Sim  (N) No \n`).toUpperCase();
 
         console.log("***************************")    
