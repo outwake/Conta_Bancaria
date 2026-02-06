@@ -1,0 +1,14 @@
+
+// NA CONTA CONTROLLE
+CADASTRAR PESSOA COM QUESTIONÁRIO CASO NÃO TENHA A INFO LÁ
+
+cadastrar(conta: Conta): void {
+        this.listarContas.push(conta);
+       let op1= Input.question(`Deseja realmente confirmar ${conta.numero}? (S) Sim (N) Não `).toUpperCase(); 
+            if(op1==="S"){
+        console.log(`A conta numero ${conta.numero} foi cadastrada com sucesso!`)
+            }
+            else if (op1==="N" || op1 !=="S"){
+                console.log("Conta Não Cadastrada")
+            }
+    }
