@@ -5,7 +5,7 @@ import { colors } from "../util/Colors";
 export class ContaPoupança extends Conta{
 
     private _diaAniversario: number;
-
+	
 
 	constructor(numero: number, agencia: number, titular: string, tipo: number, saldo: number , diaAniversario: number) {
         super(numero, agencia, titular, tipo, saldo)
