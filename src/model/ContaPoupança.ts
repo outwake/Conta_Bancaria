@@ -23,7 +23,7 @@ export class ContaPoupança extends Conta{
 
     public visualizar(): void {
         super.visualizar();
-        console.log(colors.fg.greenstrong,`Dia do Aniversário: ${this._diaAniversario} \n ` )
+        console.log(colors.fg.greenstrong,`Dia do Aniversário: ${this._diaAniversario} \n `, colors.reset )
     }
 	
 }
