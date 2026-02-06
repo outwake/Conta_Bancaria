@@ -1,25 +1,32 @@
 {
   "name": "projeto-conta-bancaria",
   "version": "1.0.0",
-  "description": "",
+  "description": "<br />",
   "main": "index.js",
+  "dependencies": {
+    "iconv-lite": "^0.7.2",
+    "readline-sync": "^1.4.10",
+    "safer-buffer": "^2.1.2",
+    "undici-types": "^7.16.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/outwake/Conta_Bancaria.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "dependencies": {
-    "@types/node": "^25.2.0",
-    "iconv-lite": "^0.7.2",
-    "readline-sync": "^1.4.10"
+  "bugs": {
+    "url": "https://github.com/outwake/Conta_Bancaria/issues"
   },
+  "homepage": "https://github.com/outwake/Conta_Bancaria#readme",
   "devDependencies": {
-    "@types/iconv-lite": "^0.0.1",
-    "@types/readline-sync": "^1.4.8"
+    "@types/node": "^25.2.1",
+    "@types/readline-sync": "^1.4.8",
+    "node": "^25.6.0"
   }
-  
-
-
 }

@@ -106,6 +106,8 @@
 
     /* Completude */
     // "skipDefaultLibCheck": true,                      /* Ignora checagem de tipos em arquivos .d.ts padrão. */
-    "skipLibCheck": true                                 /* Ignora checagem de tipos em todos os arquivos .d.ts. */
+    "skipLibCheck": true    
+                                 /* Ignora checagem de tipos em todos os arquivos .d.ts. */
   }
+  
 }
