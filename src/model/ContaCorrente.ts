@@ -8,7 +8,7 @@ export class ContaCorrente extends Conta{
 
     //Quando voce está cuidando da herança, voce tem que ao criar o construtor, colocar os atributos da classe pai
     //Então fazemos a chamada nessa parte do construtor e depois chama o método super com os atributos
-    //Não há meia herança é tudo
+    //Não há meia herança ou é tudo ou não criamos herança
 	constructor(numero: number, agencia: number, titular: string, tipo: number, saldo: number , limite: number) {
         super(numero, agencia, titular, tipo, saldo);
 		this._limite = limite;
