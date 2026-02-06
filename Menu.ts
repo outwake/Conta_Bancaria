@@ -1,9 +1,10 @@
 
 import { colors } from "./src/util/Colors"
-import { Conta } from "./src/model/Conta";
 import { Input } from "./src/util/Input";
+import { Conta } from "./src/model/Conta";
 import { ContaCorrente } from "./src/model/ContaCorrente";
 import { ContaPoupança } from "./src/model/ContaPoupança";
+
 
 
 let criaC: String;
@@ -106,7 +107,6 @@ colors.reset);
                     "**************************")
         console.log("  LISTA DAS CONTAS ATIVAS ")
         console.log("*************************** \n", colors.reset)
-
             keyPress();
 
         break;
