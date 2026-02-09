@@ -180,19 +180,37 @@ colors.reset);
         case 1: //Conta corrente
             console.log("Digite o limite da conta:")
             const limite = Input.questionFloat("");
-            contas.cadastrar(new ContaCorrente(contas.gerarNumero(), agencia, titular, tipo, saldo, limite));
+
+
+            console.log(colors.fg.yellow)
+            console.log("Confirma o cadastro? (S) Sim (N) Não", colors.reset)
+            let op2 = Input.question("").toUpperCase();   
+                
+                    if(op2==="S"){  
+                        contas.cadastrar(new ContaCorrente(contas.gerarNumero(), agencia, titular, tipo, saldo, limite));
+                    } else{
+                         console.log(colors.fg.red,"Usuário não cadastrado!", colors.reset)
+                    }
         break;
 
         case 2: //Conta poupança
             console.log("Digite o dia do aniversário da conta:")
             const aniversario = Input.questionInt("");
-            if (aniversario<=31){
-            contas.cadastrar(new ContaPoupança(contas.gerarNumero(), agencia, titular, tipo, saldo, aniversario))
-            }
-            else {
-                console.log(colors.fg.red, "Dia Não Aceito!", colors.reset)
-                return criarConta();
-            }
+            console.log(colors.fg.yellow)
+                    console.log("Confirma o cadastro? (S) Sim (N) Não", colors.reset)
+                    op2 = Input.question("").toUpperCase();   
+                
+                    if(op2==="S"){   
+                        if (aniversario<=31){
+                            contas.cadastrar(new ContaPoupança(contas.gerarNumero(), agencia, titular, tipo, saldo, aniversario))
+                     }else {
+                        console.log(colors.fg.red, "Dia Não Aceito!", colors.reset)
+                                return criarConta();} 
+    
+                }else{
+                         console.log(colors.fg.red,"Usuário não cadastrado!", colors.reset)
+                    }
+            
         break;
 
         }
