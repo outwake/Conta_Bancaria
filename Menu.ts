@@ -117,7 +117,7 @@ colors.reset);
         console.log("           SACAR          ")
         console.log("*************************** \n", colors.reset)
         console.log("Digite o numero da conta que deseja sacar:")
-        
+            sacar();
             keyPress();
         break;
 
@@ -127,7 +127,7 @@ colors.reset);
         console.log("         DEPOSITAR         ")
         console.log("*************************** \n", colors.reset)
         console.log("Digite o numero da conta que deseja depositar:")
-        
+            depositar();
             keyPress();
         break;
 
@@ -136,9 +136,7 @@ colors.reset);
                     "*****************************")
         console.log(" TRANSFERÊNCIA ENTRE CONTAS  ")
         console.log("****************************\n", colors.reset)
-        console.log("De qual conta você deseja transferir")
-
-        console.log("Qual conta que você deseja receber? ")
+        transferir();
 
         keyPress();
         break;
@@ -148,7 +146,7 @@ colors.reset);
                     "*****************************")
         console.log("     BUSCA PELO TITULAR      ")
         console.log("****************************\n", colors.reset)
-                
+        buscaNome();     
         keyPress();
         break;
         
@@ -231,23 +229,17 @@ colors.reset);
                         //Atualização da Agência
                 console.log(`\n Agência Atual: ${agencia}`);
                 console.log("Digite o numero da nova Agência \n (Pressione Enter para manter o valor atual");
-                let entrada = Input.question("")
-
-                agencia= entrada.trim() === ""? agencia: parseInt(entrada);
+                 agencia = Input.questionInt("", { defaultInput: agencia });
 
                 //Atualização do Titular
                  console.log(`\n Nome do Titular: ${titular}`);
                 console.log("Digite o novo nome do Titular \n (Pressione Enter para manter o valor atual");
-                entrada = Input.question("")
-                
-                titular= entrada.trim() === ""? titular: entrada;
+                titular = Input.question("", { defaultInput: titular });
 
                 //Atualização de Saldo
                 console.log(`\n Saldo atual: ${saldo}`);
                 console.log("Digite novo Saldo: \n (Pressione Enter para manter o valor atual");
-                entrada = Input.question("")
-                
-                saldo= entrada.trim() === ""? saldo: parseFloat(entrada.replace(",","."));
+                 saldo = Input.questionFloat("", { defaultInput: saldo });
 
 
                 //Tipo da Conta
@@ -257,7 +249,7 @@ colors.reset);
                         //Atualização do 
                         console.log(`\n Limite Atual: ${limite1}`)
                         console.log("Digite o limite Atual:")
-                        const limite = Input.questionFloat("");
+                        limite1 = Input.questionFloat("", { defaultInput: limite1 });
                         contas.atualizar(new ContaCorrente(numero, agencia, titular, tipo, saldo, limite1))
                     break;
 
@@ -265,7 +257,7 @@ colors.reset);
                         let aniversario1: number = (conta as ContaPoupança).diaAniversario;
                         console.log(`\n Limite Atual: ${aniversario1}`)
                         console.log("Digite o novo dia do aniversário da conta:")
-                        entrada = Input.question("")
+                        aniversario1 = Input.questionInt("", { defaultInput: aniversario1 });
                         contas.atualizar(new ContaPoupança(numero, agencia, titular, tipo, saldo, aniversario1))
                         
                     break;
@@ -278,9 +270,90 @@ colors.reset);
         function deletarContaPorNumero():void{
             console.log("Digite o numero da conta:")
             const numero = Input.questionInt("");
-            contas.deletar(numero);
+            let op= Input.question(`Deseja realmente apagar a conta ${numero}? (S) Sim (N) Não `).toUpperCase();
+        
+                  if(op==="S"){
+                        contas.deletar(numero);
+            
+                     }
+
+                  else if(op ==="N" || op!=="S"){
+
+                     return;
+                     
+                     }
         }
-    
+
+        //Opçao 6 Function Sacar
+        function sacar():void{
+            console.log("Digite o numero da conta:")
+            const numero = Input.questionInt("")
+
+            const conta = contas.buscarNoArray(numero)
+
+            if (conta!== null){
+                console.log ("Digite o valor do saque:");
+                const valor = Input.questionFloat("");
+
+                contas.sacar(numero, valor);
+            }
+            else{
+                console.log(colors.fg.red, `A conta numero ${numero} não foi encontrada!`, colors.reset)
+            }
+
+
+        }
+
+        //Opção 7 Depositar
+        function depositar(): void{
+             console.log("Digite o numero da conta:")
+            const numero = Input.questionInt("")
+
+            const conta = contas.buscarNoArray(numero)
+
+            if (conta!== null){
+                console.log ("Digite o valor do depósito:");
+                const valor = Input.questionFloat("");
+
+                contas.depositar(numero, valor);
+            }
+            else{
+                console.log(colors.fg.red, `A conta numero ${numero} não foi encontrada!`, colors.reset)
+            }
+        }
+
+        // Opção 8 Transferencia
+        function transferir(): void{
+        console.log("Digite o número da Conta de Origem:")
+        const numeroOrigem= Input.questionInt("");
+
+        console.log("Digite o número da Conta de Origem:")
+        const numeroDestino= Input.questionInt("");
+
+        const contaOrigem = contas.buscarNoArray(numeroOrigem);
+        const contaDestino = contas.buscarNoArray(numeroDestino);
+
+        if(contaOrigem=== null){
+            console.log(colors.fg.red, `A conta de origem numero ${numeroOrigem} nao foi encontrada!`, colors.reset)
+        }
+        else if(contaDestino === null)
+            console.log(colors.fg.red, `A conta destino numero ${numeroDestino} não foi encontrada!`)
+        else{
+            console.log("Digite o valor da Transferencia:  ");
+            const valor= Input.questionFloat("");
+            contas.transferir(numeroOrigem, numeroDestino, valor);
+        }
+        }
+
+        //Opção 9 Função de busca
+        function buscaNome(): void{
+            console.log("Digite o Nome que deseja procurar:")
+            const nomeTitular= Input.question("");
+
+            //Localizar
+            contas.procurarPorTitular(nomeTitular);
+        }
+
     function sobre(){
         console.log(colors.bg.black, colors.fg.cyanstrong,
                     "***************************************************************");
